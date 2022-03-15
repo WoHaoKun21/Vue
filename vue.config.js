@@ -4,5 +4,5 @@ module.exports = defineConfig({
     devServer: {
         open: true,
         host: "localhost"
-    }
+    },
 })
