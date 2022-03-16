@@ -5,8 +5,6 @@
         <img class="swiper-img" :src="item.imgUrl" alt=""/>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
-      <div class="swiper-pagination" slot="pagination"></div>
-      <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
 </template>
