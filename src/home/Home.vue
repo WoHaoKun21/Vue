@@ -1,13 +1,15 @@
 <template>
   <div>
-    <Header />
+    <home-header />
+    <home-swiper />
   </div>
 </template>
 
 <script>
-import Header from "../components/Header.vue";
+import HomeHeader from "../components/Header.vue";
+import HomeSwiper from "../components/Swiper.vue";
 export default {
-  components: { Header },
+  components: { HomeHeader, HomeSwiper },
   name: "HomE",
 };
 </script>
