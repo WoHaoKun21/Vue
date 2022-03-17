@@ -34,7 +34,6 @@ export default {
       });
     },
     getHomeInfoSucc(res) {
-      console.log("得到的数据：", res);
       this.city = res.city;
       this.swiperList = res.swiperList;
       this.iconList = res.iconList;
