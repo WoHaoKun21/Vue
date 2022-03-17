@@ -5,4 +5,4 @@ module.exports = defineConfig({
         open: true,
         host: "localhost"
     },
-})
+});

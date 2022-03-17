@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "IconS",
+  name: "HomeIcons",
   data() {
     return {
       iconList: [
@@ -56,40 +56,43 @@ export default {
   padding-bottom: 50%;
 }
 
-.icon {
-  overflow hidden;
-  float: left;
-  width: 25%;
-  height: 0;
-  padding-bottom: 25%;
-  position: relative;
+.icons {
+  margin-top: .1rem;
 
-  .icon-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: .44rem;
-    right: 0;
-    box-sizing: border-box;
-    padding: .1rem;
+  .icon {
+    overflow hidden;
+    float: left;
+    width: 25%;
+    height: 0;
+    padding-bottom: 25%;
+    position: relative;
 
-    img {
-      display: block;
-      margin: 0 auto;
-      height: 100%
-    }
-
-    .icon-desc {
-      text-align: center;
+    .icon-img {
       position: absolute;
+      top: 0;
       left: 0;
-      bottom: -.38rem;
+      bottom: .44rem;
       right: 0;
-      font-size: .28rem;
-      color: $darkTextColor;
-      ellipses()
+      box-sizing: border-box;
+      padding: .1rem;
+
+      img {
+        display: block;
+        margin: 0 auto;
+        height: 100%
+      }
+
+      .icon-desc {
+        text-align: center;
+        position: absolute;
+        left: 0;
+        bottom: -.38rem;
+        right: 0;
+        font-size: .28rem;
+        color: $darkTextColor;
+        ellipses()
+      }
     }
   }
 }
-
 </style>
