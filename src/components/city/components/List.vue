@@ -42,11 +42,13 @@ export default {
     hot: Array, // 热门城市
   },
   mounted() {
-    new Bscroll(".wrapper", {
-      // 用来进行设置滚动
-      movable: true,
-      zoom: true,
-    });
+    setTimeout(() => {
+      new Bscroll(".wrapper", {
+        // 用来进行设置滚动
+        pullUpLoad: true,
+        scrollbar: true,
+      });
+    }, 5);
   },
 };
 </script>
