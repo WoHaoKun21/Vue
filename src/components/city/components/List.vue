@@ -43,13 +43,14 @@ export default {
     letter: String,
   },
   mounted() {
+    this.scroll = new Bscroll(".wrapper", {
+      // 用来进行设置滚动
+      pullUpLoad: true,
+      scrollbar: true,
+    });
     setTimeout(() => {
-      this.scroll = new Bscroll(".wrapper", {
-        // 用来进行设置滚动
-        pullUpLoad: true,
-        scrollbar: true,
-      });
-    }, 15);
+      this.scroll.refresh();
+    }, 20);
   },
   watch: {
     letter() {
