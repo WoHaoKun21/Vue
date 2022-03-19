@@ -2,8 +2,8 @@
   <div>
     <city-header />
     <city-search />
-    <city-List :cities="cities" :hot="hotCities" />
-    <city-alphabet :cities="cities" />
+    <city-List :cities="cities" :hot="hotCities" :letter="letter" />
+    <city-alphabet :cities="cities" @change="handleLetterChange" />
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
     return {
       cities: {}, // 存储的是A B C D所对应的名字
       hotCities: [], // 存储的热门城市
+      letter: "", // A B C D...
     };
   },
   methods: {
@@ -31,6 +32,9 @@ export default {
     handleGetCityInfoSucc(res) {
       this.cities = res.cities; // 当前城市
       this.hotCities = res.hotCities; // 热门城市
+    },
+    handleLetterChange(letter) {
+      this.letter = letter;
     },
   },
   mounted() {

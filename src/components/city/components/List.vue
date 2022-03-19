@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item, inde) in cities" :key="inde">
+      <div class="area" v-for="(item, inde) in cities" :key="inde" :ref="inde">
         <div class="title border-topbottom">{{ inde }}</div>
         <div class="item-list">
           <div
@@ -40,15 +40,26 @@ export default {
   props: {
     cities: Object, // 城市
     hot: Array, // 热门城市
+    letter: String,
   },
   mounted() {
     setTimeout(() => {
-      new Bscroll(".wrapper", {
+      this.scroll = new Bscroll(".wrapper", {
         // 用来进行设置滚动
         pullUpLoad: true,
         scrollbar: true,
       });
-    }, 5);
+    }, 15);
+  },
+  watch: {
+    letter() {
+      // 监听letter属性，必须和变量名一样
+      if (this.letter) {
+        // 如果传过来的letter不为空
+        const element = this.$refs[this.letter][0];
+        this.scroll.scrollToElement(element);
+      }
+    },
   },
 };
 </script>
