@@ -59,7 +59,6 @@ export default {
           const touchY = e.touches[0].clientY - 79; // 79是header部分的高度
           const index = Math.floor((touchY - this.startY) / 20);
           if (index >= 0 && index < this.letters.length) {
-            console.log("得到的字母：", this.letters[index]);
             this.$emit("change", this.letters[index]); // 自定义事件，已经被父组件监控了，第二个参数是发送的数据
           }
         }, 16);

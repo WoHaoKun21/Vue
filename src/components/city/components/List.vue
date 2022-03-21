@@ -5,14 +5,19 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">保定</div>
+            <div class="button">{{ this.currentCity }}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item in hot" :key="item.id">
+          <div
+            class="button-wrapper"
+            v-for="item in hot"
+            :key="item.id"
+            @touchstart="handleCityClick(item.name)"
+          >
             <div class="button">{{ item.name }}</div>
           </div>
         </div>
@@ -24,6 +29,7 @@
             class="item border-topbottom"
             v-for="innerItem in item"
             :key="innerItem.id"
+            @touchstart="handleCityClick(innerItem.name)"
           >
             {{ innerItem.name }}
           </div>
@@ -35,6 +41,7 @@
 
 <script>
 import Bscroll from "better-scroll";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "CityList",
   props: {
@@ -42,15 +49,16 @@ export default {
     hot: Array, // 热门城市
     letter: String,
   },
-  mounted() {
-    this.scroll = new Bscroll(".wrapper", {
-      // 用来进行设置滚动
-      pullUpLoad: true,
-      scrollbar: true,
-    });
-    setTimeout(() => {
-      this.scroll.refresh();
-    }, 20);
+  computed: {
+    ...mapState({ currentCity: "city" }),
+  },
+  methods: {
+    handleCityClick(city) {
+      //   this.$store.commit("changeCity", city);
+      this.changeCity(city);
+      this.$router.push("/");
+    },
+    ...mapMutations(["changeCity"]),
   },
   watch: {
     letter() {
@@ -61,6 +69,16 @@ export default {
         this.scroll.scrollToElement(element);
       }
     },
+  },
+  mounted() {
+    this.scroll = new Bscroll(".wrapper", {
+      // 用来进行设置滚动
+      pullUpLoad: true,
+      scrollbar: true,
+    });
+    setTimeout(() => {
+      this.scroll.refresh();
+    }, 20);
   },
 };
 </script>
