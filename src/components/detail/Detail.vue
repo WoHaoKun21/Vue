@@ -1,6 +1,10 @@
 <template>
   <div>
-    <detail-banner />
+    <detail-banner
+      :bannerImg="bannerImg"
+      :sightName="sightName"
+      :gallaryImgs="gallaryImgs"
+    />
     <detail-header />
     <div class="content">
       <detail-list :list="list" />
@@ -9,6 +13,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import DetailBanner from "./components/Banner.vue";
 import DetailHeader from "./components/Header.vue";
 import DetailList from "./components/List.vue";
@@ -17,22 +22,31 @@ export default {
   components: { DetailBanner, DetailHeader, DetailList },
   data() {
     return {
-      list: [
-        {
-          title: "成人票",
-          children: [
-            {
-              title: "成人三馆联票",
-              children: [{ title: "成人三馆联票 — 某一连锁店销售" }],
-            },
-            { title: "成人五馆联票" },
-          ],
-        },
-        { title: "学生票" },
-        { title: "儿童票" },
-        { title: "特惠票" },
-      ],
+      bannerImg: "", // banner页面的图片
+      sightName: "", // 景点名称
+      gallaryImgs: [], // banner滑动图
+      list: [], // 详情信息页表
     };
+  },
+  methods: {
+    getDetailInfo() {
+      axios
+        .get(`./api/detail.json`, { params: this.$route.params })
+        .then((res) => {
+          if (res.data) {
+            this.getDetailInfoSucc(res.data.data);
+          }
+        });
+    },
+    getDetailInfoSucc(res) {
+      this.bannerImg = res.bannerImg;
+      this.sightName = res.sightName;
+      this.gallaryImgs = res.gallaryImgs;
+      this.list = res.categoryList;
+    },
+  },
+  mounted() {
+    this.getDetailInfo();
   },
 };
 </script>

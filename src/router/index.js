@@ -15,7 +15,10 @@ const router = new VueRouter({
     // mode: 'history',// BrowserRouter
     mode: 'hash',// HashRouter
     base: process.env.BASE_URL,
-    routes
+    routes,
+    scrollBehavior() {// vue-router官方文档的滚动行为提供的方法，防止在其他页面产生同步滚动——————注意版本的问题
+        return { x: 0, y: 0 }
+    }
 })
 
 export default router
