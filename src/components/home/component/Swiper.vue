@@ -18,8 +18,13 @@ export default {
   data() {
     return {
       swiperOptions: {
-        pagination: ".swiper-pagination",
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          type: "bullets",
+        },
         loop: true,
+        autoplay: true,
       },
     };
   },
@@ -40,10 +45,6 @@ export default {
 
   .swiper-img {
     width: 100%;
-  }
-
-  .swiper-pagination {
-    color: #f00;
   }
 }
 </style>
