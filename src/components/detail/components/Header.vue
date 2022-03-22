@@ -9,7 +9,6 @@
       </router-link>
       景点详情
     </div>
-    <div class="conten"></div>
   </div>
 </template>
 
@@ -47,10 +46,6 @@ export default {
 <style lang="stylus" scoped>
 @import 'styles/varibles.styl';
 
-.conten {
-  height: 50rem;
-}
-
 .header-abs {
   position: absolute;
   left: 0.2rem;
@@ -73,6 +68,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
   height: $headerHeight;
   line-height: $headerHeight;
   text-align: center;
