@@ -16,12 +16,11 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "HeadeR",
   computed: {
     ...mapState(["city"]),
-    ...mapGetters(["doubleCity"]),
   },
 };
 </script>
